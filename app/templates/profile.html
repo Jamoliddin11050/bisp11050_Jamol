@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <header class="profile-header">
+        <nav class="profile-nav">
+            <ul class="profile-nav-list">
+                <li><a href="{{ url_for('index') }}" class="profile-nav-link">Home</a></li>
+                <li><a href="{{ url_for('properties') }}" class="profile-nav-link">Properties</a></li>
+                <li><a href="{{ url_for('logout') }}" class="profile-nav-link">Logout</a></li>
+                <li><a href="{{ url_for('user_bookings', user_id=user.id) }}" class="profile-nav-link">My Bookings</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="profile-main">
+        <h1 class="profile-heading">{{ user.username }}'s Profile</h1>
+        <h2 class="profile-subheading">My Properties</h2>
+        <ul class="profile-properties-list">
+            {% for property in user.properties %}
+            <li class="profile-property-item">{{ property.name }}</li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+
+</html>

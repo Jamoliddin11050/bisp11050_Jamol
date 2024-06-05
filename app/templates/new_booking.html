@@ -1,0 +1,18 @@
+<!-- templates/new_booking.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Property</title>
+</head>
+<body>
+    <h1>Book Property: {{ property.name }}</h1>
+    <form action="{{ url_for('book_property', id=property.id) }}" method="POST">
+        <label for="booking_date">Booking Date:</label>
+        <input type="date" id="booking_date" name="booking_date" required>
+        <button type="submit">Book</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Bookings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <header class="user-bookings-header">
+        <nav class="user-bookings-nav">
+            <ul class="user-bookings-nav-list">
+                <li><a href="{{ url_for('index') }}" class="user-bookings-nav-link">Home</a></li>
+                <li><a href="{{ url_for('properties') }}" class="user-bookings-nav-link">Properties</a></li>
+                <li><a href="{{ url_for('logout') }}" class="user-bookings-nav-link">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="user-bookings-main">
+        <h1 class="user-bookings-heading">My Bookings</h1>
+        <ul class="user-bookings-list">
+            {% for booking in bookings %}
+            <li class="user-booking-item">{{ booking.property.name }} - {{ booking.booking_date }}</li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+
+</html>

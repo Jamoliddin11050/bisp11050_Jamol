@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block title %}Reviews for {{ property.name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="title">Reviews for {{ property.name }}</h1>
+
+    <!-- Flash messages section -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flashes">
+          {% for category, message in messages %}
+            <div class="flash-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <style>
+        /* Additional CSS styles for property_reviews.html */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0; /* Light gray background */
+        }
+
+        .title {
+            text-align: center;
+            color: #333; /* Dark text color */
+            margin-bottom: 40px;
+        }
+
+        .form-section {
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .review {
+            background-color: #fff; /* White background for reviews */
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease; /* Smooth background color transition */
+        }
+
+        /* Hover effect for reviews */
+        .review:hover {
+            background-color: #f9f9f9; /* Light gray background on hover */
+        }
+
+        /* Animation for submit button */
+        .btn-primary {
+            background-color: #007bff; /* Primary button color */
+            color: #fff; /* White text color */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth background color transition */
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker shade of primary color on hover */
+        }
+    </style>
+
+    {% if current_user.is_authenticated and property.owner_id != current_user.id %}
+    <div class="form-section">
+        <h2>Submit a Review</h2>
+        <form method="post" class="review-form">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.rating.label }}: {{ form.rating }}
+            </div>
+            <div class="form-group">
+                {{ form.comment.label }}: {{ form.comment }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Review</button>
+        </form>
+    </div>
+    {% endif %}
+
+    <div class="reviews-section">
+        <h2>Existing Reviews</h2>
+        {% for review in reviews %}
+        <div class="review">
+            <p>Rating: {{ review.rating }}</p>
+            <p>Comment: {{ review.comment }}</p>
+            <p>Posted by: {{ review.user.username if review.user else 'Anonymous' }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

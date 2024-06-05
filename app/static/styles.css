@@ -1,0 +1,168 @@
+/* styles.css */
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 2rem;
+}
+
+.hero {
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #555;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+.user-bookings-header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+}
+
+.user-bookings-nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-bookings-nav-list {
+    list-style-type: none;
+    display: flex;
+}
+
+.user-bookings-nav-link {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 1rem;
+}
+
+.user-bookings-main {
+    padding: 2rem;
+}
+
+.user-bookings-heading {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.user-bookings-list {
+    list-style: none;
+}
+
+.user-booking-item {
+    background-color: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-booking-item:hover {
+    background-color: #f0f0f0;
+}
+.profile-header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+}
+
+.profile-nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-nav-list {
+    list-style-type: none;
+    display: flex;
+}
+
+.profile-nav-link {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 1rem;
+}
+
+.profile-main {
+    padding: 2rem;
+}
+
+.profile-heading {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.profile-subheading {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.profile-properties-list {
+    list-style: none;
+}
+
+.profile-property-item {
+    background-color: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-property-item:hover {
+    background-color: #f0f0f0;
+}

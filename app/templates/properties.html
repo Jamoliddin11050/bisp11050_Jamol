@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block title %}Properties Dashboard{% endblock %}
+
+{% block content %}
+<main class="properties-dashboard">
+    <style>
+        /* Internal CSS style */
+        /* Styles for the properties dashboard page */
+        .properties-dashboard {
+            padding: 20px;
+            background-color: #f8f9fa; /* Set the background color of the page */
+        }
+
+        /* Styles for the search form */
+        .search-form {
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            margin-right: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .search-btn {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Styles for the property cards */
+        .property-card {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styles for the action buttons */
+        .action-btn {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .edit-btn {
+            background-color: #ffc107;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .book-btn {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .action-btn:hover {
+            opacity: 0.8;
+        }
+    </style>
+
+    <h1>Properties Dashboard</h1>
+    <form method="GET" action="{{ url_for('properties') }}" class="search-form">
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" class="search-input">
+
+        <label for="min_price">Min Price:</label>
+        <input type="number" id="min_price" name="min_price" step="0.01" class="search-input">
+
+        <label for="max_price">Max Price:</label>
+        <input type="number" id="max_price" name="max_price" step="0.01" class="search-input">
+
+        <label for="name">Property Name:</label>
+        <input type="text" id="name" name="name" class="search-input">
+
+        <button type="submit" class="search-btn">Search</button>
+    </form>
+    <div class="property-cards">
+        {% for property in properties %}
+        <div class="property-card">
+            <h2>{{ property.name }}</h2>
+            <p>{{ property.description }}</p>
+            <p>Price: ${{ property.price }}</p>
+            <p>Address: {{ property.address }}</p>
+            {% if current_user.is_authenticated %}
+                {% if property.owner_id == current_user.id %}
+                    <a href="{{ url_for('edit_property', id=property.id) }}" class="action-btn edit-btn">Edit</a>
+                    <a href="{{ url_for('delete_property', id=property.id) }}" class="action-btn delete-btn">Delete</a>
+                {% else %}
+                    <a href="{{ url_for('book_property', id=property.id) }}" class="action-btn book-btn">Book</a>
+                {% endif %}
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}
